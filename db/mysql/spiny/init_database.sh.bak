@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# Linux platform bash file
+echo "MySQL Database Initial script"
+echo "author godcheese"
+echo "Linux/Unix Platform"
+
+mysql_dir="mysql_dir"
+host="localhost"
+port=3306
+user="root"
+password="root"
+database="spiny"
+
+current_dir=`pwd`
+cd $current_dir
+table_dir="$current_dir/tables"
+exec="$mysql_dir\mysql -h$host -P$port -u$user -p$password -D$database<$table_dir"
+
+sh "$exec/api_category_table.sql"
+sh "$exec/api_table.sql"
+
+sh "$exec/data.sql"
+
+read -s -n1 -p "按任意键退出 ..."
